@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
-import Letter from '../components/Game/Letter'
-import Word from '../components/Game/Word'
 import axios from 'axios'
 import styles from '../pages/style.module.css'
+import Letter from '../components/Game/Letter'
+import Word from '../components/Game/Word'
 import TryAgain from '../components/TryAgain'
 import HangmanAttempts from '../components/Game/Hangman/HangmanAttempts'
+import Header from '../components/Header'
 import { checkIfSelectedLetterExist, checkWin } from '../utils/utils'
+
 const Game = () => {
     const [word, setWord] = useState([]);
     const [wordStr, setWordStr] = useState('');
@@ -49,24 +51,37 @@ const Game = () => {
         }
     }
 
-    
-    return <div className={styles.gameContainer}>
-            <Letter letters={letters} selectLetter={selectLetter} />
-            <div className={styles.gameBody}>
-                <div className={styles.gameBodyLeft}>
-                    {word.length ? <Word word={word} /> : <div>Loading...</div>} 
-                    <div className={styles.count}>
-                        Remaining: {count}
+    const renderComponent = () => {
+        if (!count) {
+            return <TryAgain isUserWin={false} word={wordStr} text="Game Over!" />
+        }
+        
+        if (isUserWin) {
+            return <TryAgain isUserWin={true} word={wordStr} text="Congrats!" />
+        }
+
+        return (
+            <>
+            <Header />
+            <div className={styles.gameContainer}>
+                <Letter letters={letters} selectLetter={selectLetter} />
+                <div className={styles.gameBody}>
+                    <div className={styles.gameBodyLeft}>
+                        {word.length ? <Word word={word} /> : <div>Loading...</div>} 
+                        <div className={styles.count}>
+                            Remaining: {count}
+                        </div>
+                    </div>
+                    <div className={styles.gameBodyRight}>
+                        <HangmanAttempts attemptsLeft={count} />
                     </div>
                 </div>
-                <div className={styles.gameBodyRight}>
-                    <HangmanAttempts attemptsLeft={count} />
-                </div>
             </div>
-            {!count && <TryAgain isUserWin={false} word={wordStr} text="Game Over!" />}
-            {isUserWin && <TryAgain isUserWin={true} word={wordStr} text="Congrats!" />}
-            </div>
-    
+            </>
+        )
+    }
+     
+    return renderComponent();
 }
 
 export default Game
