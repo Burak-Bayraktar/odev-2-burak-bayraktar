@@ -20,7 +20,7 @@ const Game = () => {
                                     }))
 
     useEffect(() => {
-        axios.get(process.env.REACT_APP_API_URL).then((res) => {
+        axios.get("https://random-word-api.herokuapp.com/word?number=1").then((res) => {
             const { data } = res;
             const _word = Array.from(data[0]).map(letter => {
                 return {
