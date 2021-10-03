@@ -1,0 +1,23 @@
+.modalContainer {
+    background-color: black;
+    opacity: 1;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+.modalTryAgain {
+    width: 300px;
+    height: 180px;
+    background-color: brown;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}

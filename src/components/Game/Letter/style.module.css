@@ -1,0 +1,29 @@
+.letterContainer {
+    width: 100%;
+    height: auto;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    margin: 0 2px;
+    border-radius: 50%;
+    width: 0.75rem;
+    cursor: pointer;
+    background-color: #8a5b5b;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.clicked {
+    background-color: black;
+    cursor: default;
+    pointer-events: none;
+}
