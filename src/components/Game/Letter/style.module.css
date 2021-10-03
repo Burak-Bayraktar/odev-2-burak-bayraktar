@@ -1,5 +1,5 @@
 .letterContainer {
-    width: 100%;
+    width: max-content;
     height: auto;
     margin-top: 3rem;
     display: flex;
@@ -14,7 +14,7 @@
     padding: 5px 10px;
     margin: 0 2px;
     border-radius: 50%;
-    width: 0.75rem;
+    width: 1rem;
     cursor: pointer;
     background-color: #8a5b5b;
     color: white;

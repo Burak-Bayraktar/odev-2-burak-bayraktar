@@ -1,5 +1,6 @@
 .gameContainer {
     height: auto;
+    margin: auto;
 }
 
 .gameBody {
@@ -11,6 +12,12 @@
 .gameBodyLeft {
     padding: 50px 5px;
     margin-top: -10rem;
+}
+
+.gameBodyRight {
+    transform: scale(0.5);
+    margin-top: -5rem;
+    margin-left: 5rem;
 }
 
 .count {

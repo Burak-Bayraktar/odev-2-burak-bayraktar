@@ -3,7 +3,6 @@ import Letter from '../components/Game/Letter'
 import Word from '../components/Game/Word'
 import axios from 'axios'
 import styles from '../pages/style.module.css'
-// import Hangman from '../components/Game/Hangman/Hangman'
 import TryAgain from '../components/TryAgain'
 import HangmanAttempts from '../components/Game/Hangman/HangmanAttempts'
 import { checkIfSelectedLetterExist, checkWin } from '../utils/utils'
@@ -21,7 +20,7 @@ const Game = () => {
                                     }))
 
     useEffect(() => {
-        axios.get('https://random-word-api.herokuapp.com/word?number=1').then((res) => {
+        axios.get(process.env.REACT_APP_API_URL).then((res) => {
             const { data } = res;
             const _word = Array.from(data[0]).map(letter => {
                 return {
@@ -29,7 +28,6 @@ const Game = () => {
                     isSelected: false
                 }
             })
-            console.log(data[0]);
             setWord(_word);
             setWordStr(data[0]);
         })        
@@ -41,7 +39,6 @@ const Game = () => {
         
         const result = checkIfSelectedLetterExist(word, letter);
 
-        console.log(word)
         const _isUserWin = checkWin(word);
 
         if(_isUserWin) {
@@ -57,17 +54,17 @@ const Game = () => {
             <Letter letters={letters} selectLetter={selectLetter} />
             <div className={styles.gameBody}>
                 <div className={styles.gameBodyLeft}>
-                    <Word word={word} />
+                    {word.length ? <Word word={word} /> : <div>Loading...</div>} 
                     <div className={styles.count}>
                         Remaining: {count}
                     </div>
                 </div>
                 <div className={styles.gameBodyRight}>
+                    <HangmanAttempts attemptsLeft={count} />
                 </div>
-                <HangmanAttempts attemptsLeft={count} />
             </div>
-            {!count && <TryAgain word={wordStr} text="Try Again!" />}
-            {isUserWin && alert("Congrats")}
+            {!count && <TryAgain isUserWin={false} word={wordStr} text="Game Over!" />}
+            {isUserWin && <TryAgain isUserWin={true} word={wordStr} text="Congrats!" />}
             </div>
     
 }
