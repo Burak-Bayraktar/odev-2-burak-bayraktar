@@ -1,6 +1,9 @@
 import React from 'react'
 import styles from './style.module.css'
 
+/*
+    Renders letters of the word
+*/
 const Word = ({ word }) => {
 
     return (

@@ -1,17 +1,5 @@
 import React from 'react';
-
-const styles = {
-  character: {
-    fill: 'none',
-    stroke: 'black',
-    strokeWidth: 3,
-  },
-  post: {
-    fill: 'none',
-    stroke: 'black',
-    strokeWidth: 10,
-  },
-};
+import styles from './styles.module.css'
 
 const Hangman = (props) => {
     function renderHead() {

@@ -1,6 +1,9 @@
 import React from 'react'
 import styles from './style.module.css'
 
+/*
+    Renders alphabet
+*/
 const Letter = ({ letters, selectLetter }) => {
 
     return (

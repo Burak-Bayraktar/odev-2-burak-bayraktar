@@ -1,0 +1,11 @@
+.character {
+    fill: 'none';
+    stroke: 'black';
+    stroke-width: 3;
+}
+
+.post {
+    fill: 'none';
+    stroke: 'black';
+    stroke-width: 10;
+}
