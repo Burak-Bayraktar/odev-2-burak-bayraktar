@@ -30,7 +30,7 @@ const Game = () => {
                     isSelected: false
                 }
             })
-            console.log(data[0])
+
             setWord(_word);
             setWordStr(data[0]);
         })        
