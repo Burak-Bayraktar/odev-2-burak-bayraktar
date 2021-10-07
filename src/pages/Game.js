@@ -22,7 +22,7 @@ const Game = () => {
                                     }))
 
     useEffect(() => {
-        axios.get("https://random-word-api.herokuapp.com/word?number=1").then((res) => {
+        axios.get(process.env.REACT_APP_API).then((res) => {
             const { data } = res;
             const _word = Array.from(data[0]).map(letter => {
                 return {
@@ -30,6 +30,7 @@ const Game = () => {
                     isSelected: false
                 }
             })
+            console.log(data[0])
             setWord(_word);
             setWordStr(data[0]);
         })        
@@ -39,14 +40,14 @@ const Game = () => {
         setWord(() => word.map((w) => w.value === letter.value ? { ...w, isSelected: true} : w));    
         setLetters(() => letters.map((l) =>  l.value === letter.value ? {...l, isClicked: true} : l));
         
-        const result = checkIfSelectedLetterExist(word, letter);
+        const selectedLetters = checkIfSelectedLetterExist(word, letter);
 
-        const _isUserWin = checkWin(word);
+        const _isUserWin = checkWin(word, selectedLetters);
 
         if(_isUserWin) {
             setIsUserWin(_isUserWin);
         }
-        if(!result.length) {
+        if(!selectedLetters.length) {
             setCount(count-1);
         }
     }

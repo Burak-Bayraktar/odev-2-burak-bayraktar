@@ -4,9 +4,9 @@ export const checkIfSelectedLetterExist = (word, letter) => {
     });
 }
 
-export const checkWin = (word) => {
+export const checkWin = (word, letters) => {
     const knownLetters = word.filter((w) => {
         return w.isSelected === true;
     })
-    return knownLetters.length + 1 === word.length ? true : false;
+    return knownLetters.length + letters.length === word.length ? true : false;
 }
