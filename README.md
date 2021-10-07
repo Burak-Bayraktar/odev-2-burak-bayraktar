@@ -1,3 +1,3 @@
 # Exam 2
 
-Hangman Game ([LIVE](https://odev2-burak-bayraktar.herokuapp.com/))
+Hangman Game ([LIVE](https://vibrant-chandrasekhar-b078f5.netlify.app/))
